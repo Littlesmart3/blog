@@ -1,0 +1,89 @@
+// 行弹性
+.row-start {
+  display: flex;
+  align-items: center;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+}
+
+.row-end {
+  display: flex;
+  align-items: center;
+  flex-flow: row nowrap;
+  justify-content: flex-end;
+}
+
+.row-center {
+  display: flex;
+  align-items: center;
+  flex-flow: row nowrap;
+  justify-content: center;
+}
+
+.row-around {
+  display: flex;
+  align-items: center;
+  flex-flow: row nowrap;
+  justify-content: space-around;
+}
+
+.row-between {
+  display: flex;
+  align-items: center;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+}
+
+// 列弹性
+.col-start {
+  display: flex;
+  align-items: center;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+}
+
+.col-end {
+  display: flex;
+  align-items: center;
+  flex-flow: column nowrap;
+  justify-content: flex-end;
+}
+
+.col-around {
+  display: flex;
+  align-items: center;
+  flex-flow: column nowrap;
+  justify-content: space-around;
+}
+
+.col-center {
+  display: flex;
+  align-items: center;
+  flex-flow: column nowrap;
+  justify-content: center;
+}
+
+.col-between {
+  display: flex;
+  align-items: center;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+}
+
+// align-items定制
+.align-item-start {
+  align-items: flex-start;
+}
+
+.align-item-end {
+  align-items: flex-end;
+}
+
+// 自身弹性
+.row-top {
+  align-items: flex-start;
+}
+
+.row-wrap {
+  flex-wrap: wrap;
+}

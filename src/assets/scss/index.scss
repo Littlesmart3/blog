@@ -1,0 +1,284 @@
+@import './layout.scss';
+@import './margin.scss';
+@import './padding.scss';
+@import './size.scss';
+@import './position.scss';
+
+
+.h100 {
+  height: 100%;
+}
+
+.h90 {
+  height: 90%;
+}
+
+.h80 {
+  height: 80%;
+}
+
+.w100 {
+  width: 100%;
+}
+
+.vab {
+  vertical-align: text-bottom;
+}
+
+.fw {
+  font-weight: bolder;
+}
+
+.is-disabled {
+  .el-input__inner {
+    color: #606266 !important;
+  }
+}
+
+// 搜索组件
+.search-general-area {
+  .search-item {
+    .el-date-editor {
+      width: 220px;
+    }
+
+    .el-input {
+      width: 220px;
+    }
+
+    .el-input-number {
+      .el-input {
+        width: 100px;
+      }
+    }
+
+    .el-select {
+      width: 220px;
+    }
+
+    .el-date-editor--daterange {
+      width: 220px;
+    }
+  }
+}
+
+// .togo-btn-style-none {
+//   min-height: 0;
+//   padding: 0;
+// }
+
+// 文件导入组件
+.upload-file {
+  .el-upload__tip {
+    margin-top: 20px;
+  }
+
+  // .el-form-item__content {
+  //   line-height: inherit;
+  // }
+
+  .el-upload-list {
+    margin-bottom: 10px;
+  }
+}
+
+//自定义图表转换按钮图表大小
+.table-to-chart {
+  .el-icon-coin,
+  .el-icon-s-data {
+    font-size: 25px !important;
+  }
+}
+
+// 货品添加组件
+.add-good-inner {
+  .el-input__inner {
+    width: 200px !important;
+  }
+}
+
+// 表格列单选radio
+.table-radio {
+  .el-radio {
+    width: 100%;
+
+    text-align: center;
+
+    .el-radio__label {
+      display: none;
+    }
+  }
+}
+
+// 定制日志格式
+.el-timeline-item__content {
+  color: #909399;
+}
+
+.tugou-cusor {
+  cursor: pointer;
+}
+
+// 定制表格error单元格显示
+.tugou-error-table {
+  .el-form-item {
+    margin-top: 1.75rem;
+  }
+}
+
+.el-main {
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.log-list {
+  overflow-y: scroll;
+
+  height: 300px;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+// 定制弹窗
+.diy-dialog {
+  .el-dialog__header {
+    padding-bottom: 20px;
+  }
+
+  .el-dialog__body {
+    margin-bottom: 8px;
+    padding: 0;
+  }
+}
+
+// 定制选择框百分百
+.select-w100 {
+  .el-cascader,
+  .el-input-number,
+  .el-select {
+    width: 100%;
+  }
+}
+
+// 定制日志滚动区域
+.log-list {
+  overflow-y: scroll;
+
+  height: 300px;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+// 定制取消页面滚动条
+.el-main {
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.report-info {
+  margin-right: 20px;
+
+  color: $detail_table_info_bg;
+
+  font-size: 14px;
+}
+
+// 锁定按钮图标
+.icon-unlock {
+  padding-right: 5px;
+
+  color: $success;
+
+  font-size: 17px;
+}
+
+.icon-lock {
+  padding-right: 5px;
+
+  color: $error;
+
+  font-size: 17px;
+}
+
+.messagebox-alert {
+  color: #e74242;
+  font-size: 16px;
+}
+.messagebox-warning {
+  color: #f6a508;
+  font-size: 16px;
+}
+
+.el-message-box {
+  border-radius: 8px;
+}
+
+.no-disabled {
+  width: 100%;
+  .is-disabled {
+    .el-input__inner {
+      background-color: #fff;
+    }
+  }
+}
+.tab-area {
+  position: relative;
+  .tab-area-right {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+}
+.text-over {
+  width: 100%;
+  text-overflow: -o-ellipsis-lastline;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.el-button--small {
+  border-radius: 4px;
+  padding-left: 18px;
+  padding-right: 18px;
+}
+
+.el-button--text {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+// 隐藏上传组件右上角绿色方块
+.el-upload-list__item .el-icon-close-tip,
+.el-upload-list__item.is-success .el-upload-list__item-status-label,
+.el-upload-list.is-disabled .el-upload-list__item:hover .el-upload-list__item-status-label {
+  display: none !important;
+}
+
+.el-table__fixed-right {
+  height: 100% !important;
+}
+.el-message-box {
+  padding-bottom: 20px !important;
+}
+
+
+.el-cascader-panel .el-radio {
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.el-cascader-panel .el-radio__input {
+    visibility: hidden;
+}

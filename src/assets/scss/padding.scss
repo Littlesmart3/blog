@@ -1,0 +1,106 @@
+// padding-top
+.pt1 {
+  padding-top: 1px;
+}
+.pt5{
+  padding-top: 5px;
+}
+.pt10{
+  padding-top: 10px;
+}
+.pt15{
+  padding-top: 15px;
+}
+.pt20{
+  padding-top: 20px;
+}
+.pt30{
+  padding-top: 30px;
+}
+.pt-20 {
+  padding-top: -20px;
+}
+
+
+// padding-right
+.pr1 {
+  padding-right: 1px;
+}
+.pr5{
+  padding-right: 5px;
+}
+.pr10{
+  padding-right: 10px;
+}
+.pr12{
+  padding-right: 12px;
+}
+.pr20{
+  padding-right: 20px;
+}
+.pr30{
+  padding-right: 30px;
+}
+
+// padding-bottom
+.pb1 {
+  padding-bottom: 1px;
+}
+.pb5{
+  padding-bottom: 5px;
+}
+.pb10{
+  padding-bottom: 10px;
+}
+.pb20{
+  padding-bottom: 20px;
+}
+.pb30{
+  padding-bottom: 30px;
+}
+
+// padding-left
+.pl1 {
+  padding-left: 1px;
+}
+.pl5{
+  padding-left: 5px;
+}
+.pl10{
+  padding-left: 10px;
+}
+.pl12{
+  padding-left: 12px;
+}
+.pl20{
+  padding-left: 20px;
+}
+.pl30{
+  padding-left: 30px;
+}
+
+// 上下左右简写
+.p1 {
+  padding: 1px
+}
+.p5{
+  padding: 5px;
+}
+.p10{
+  padding: 10px;
+}
+
+.p20{
+  padding: 20px;
+}
+
+// 上下、左右简写
+.pp1 {
+  padding: 1px 1px;
+}
+
+// 自由组合
+.pt1pb1 {
+  padding-top: 1px;
+  padding-bottom: 1px;
+}
