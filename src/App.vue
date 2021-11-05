@@ -3,12 +3,9 @@
 </template>
 
 <script lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
-
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+import { defineComponent } from 'vue';
+export default {}
 </script>
+
+<style lang="scss">
+</style>

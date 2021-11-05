@@ -56,9 +56,7 @@ export default defineConfig({
   resolve: {
     // 导入文件夹别名
     alias: {
-      '@': join(__dirname, 'src/render'),
-      '@src': join(__dirname, 'src'),
-      '@root': __dirname
+      '@': join(__dirname, 'src'),
     },
   }
 })
