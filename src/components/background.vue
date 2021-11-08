@@ -23,8 +23,6 @@ export default defineComponent({
 
 <style lang="scss">
 .background {
-  height: 100%;
-  width: 100%;
   margin: 0;
   padding: 0;
   border: 0;
@@ -47,6 +45,7 @@ export default defineComponent({
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
+    z-index: -1;
     .video-bg-mask {
       position: absolute;
       top: 0;
@@ -54,8 +53,8 @@ export default defineComponent({
       width: 100%;
       height: 100%;
       background: #101010;
-      opacity: 0.4;
-      z-index: 2;
+      // opacity: 0.4;
+      z-index: -2;
     }
     .video-bg-texture {
       position: absolute;
@@ -63,21 +62,29 @@ export default defineComponent({
       left: 0;
       width: 100%;
       height: 100%;
-      z-index: 2;
+      z-index: -2;
     }
-  }
-  #grained_container::before {
-    position: absolute;
-    content: '';
-    background-image: url(@/assets/img/background.png);
-    height: 300%;
-    width: 300%;
-    left: -100%;
-    top: -100%;
-    animation-name: grained;
-    animation-iteration-count: infinite;
-    animation-duration: 0.5s;
-    animation-timing-function: steps(20);
+    #grained_container::before {
+      position: absolute;
+      content: '';
+      background-image: url(@/assets/img/background.png);
+      height: 300%;
+      width: 300%;
+      left: -100%;
+      top: -100%;
+      animation-name: grained;
+      animation-iteration-count: infinite;
+      animation-duration: 0.5s;
+      animation-timing-function: steps(20);
+    }
+    @keyframes grained {
+      from {
+        background-position: 0 0;
+      }
+      to {
+        background-position: 100% 100%;
+      }
+    }
   }
 }
 </style>
