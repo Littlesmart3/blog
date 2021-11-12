@@ -12,11 +12,6 @@ import { defineComponent } from 'vue';
 
 export default defineComponent({
   name: 'home',
-  data() {
-    return {
-      msg: 'about 啦啦啦啦啦'
-    };
-  },
   setup() {}
 });
 </script>
