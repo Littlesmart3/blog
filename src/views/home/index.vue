@@ -9,7 +9,7 @@
         <el-button type="primary" size="small" @click="btn">按钮1</el-button>
         <el-button type="primary" size="small" @click="btn">按钮2</el-button>
       </el-main>
-      <el-footer>Footer000000000sadhaioufhgdksajhdjklasgfkulahsbdlkgh</el-footer>
+      <el-footer style="color: #fff">王老板，能请我吃个饭不</el-footer>
     </el-container>
   </div>
 </template>
