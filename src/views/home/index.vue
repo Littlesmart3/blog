@@ -23,7 +23,7 @@ export default defineComponent({
   components: { BackGround, Nav },
   data() {
     return {
-      msg: 'about 啦啦啦啦啦'
+      msg: '芜湖起飞呀～'
     };
   },
   setup() {
