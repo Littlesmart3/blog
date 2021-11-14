@@ -7,7 +7,6 @@
       </el-header>
       <el-main>
         <el-button type="primary" size="small" @click="btn">按钮1</el-button>
-        <el-button type="primary" size="small" @click="btn">按钮2</el-button>
       </el-main>
       <el-footer style="color: #fff">加油，干饭人！</el-footer>
     </el-container>
