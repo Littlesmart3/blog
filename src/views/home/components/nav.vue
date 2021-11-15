@@ -2,26 +2,18 @@
   <div class="home-component-nav">
     <div class="row-between nav">
       <div>
-        <el-dropdown>
-          <span class="el-dropdown-link">
-            <span class="fs16 color-w">LEE</span>
-            <el-icon class="el-icon--right">
-              <arrow-down />
-            </el-icon>
-          </span>
-          <template #dropdown>
-            <el-dropdown-menu>
-              <el-dropdown-item>Action 1</el-dropdown-item>
-              <el-dropdown-item>Action 2</el-dropdown-item>
-              <el-dropdown-item>Action 3</el-dropdown-item>
-              <el-dropdown-item disabled>Action 4</el-dropdown-item>
-              <el-dropdown-item divided>Action 5</el-dropdown-item>
-            </el-dropdown-menu>
-          </template>
-        </el-dropdown>
+        <span class="el-dropdown-link">
+          <div class="block">
+            <el-image :src="logo">
+              <template #placeholder>
+                <div class="image-slot">Loading<span class="dot">...</span></div>
+              </template>
+            </el-image>
+          </div>
+        </span>
       </div>
       <div class="nav-item">
-        <el-dropdown v-for="(item, key) of menu_list" :key="key">
+        <!-- <el-dropdown v-for="(item, key) of menu_list" :key="key">
           <span class="el-dropdown-link">
             <span>{{ item.name }}</span>
             <el-icon class="el-icon--right">
@@ -33,7 +25,7 @@
               <el-dropdown-item v-for="(element, index) of item.children" :key="index" @click="dropdownMenuClick(element.value)">{{ element.label }}</el-dropdown-item>
             </el-dropdown-menu>
           </template>
-        </el-dropdown>
+        </el-dropdown> -->
       </div>
     </div>
   </div>
@@ -102,6 +94,8 @@ export default defineComponent({
         ]
       }
     ];
+    // const logo = 'https://tva1.sinaimg.cn/large/008i3skNly1gwgajgurtkj30iq03wq30.jpg';
+    const logo = 'https://tva1.sinaimg.cn/large/008i3skNly1gwgazhdyxdj30jq04wglr.jpg';
     const state = reactive({
       menu_list
     });
@@ -112,17 +106,22 @@ export default defineComponent({
     const methods = {
       dropdownMenuClick
     };
-    return { ...toRefs(state), ...methods };
+    return { ...toRefs(state), ...methods, logo };
   }
 });
 </script>
 
 <style lang="scss" scoped>
 .home-component-nav {
-  height: 140px;
-  width: 100%;
+  height: 100%;
+
+  margin: 0 50px;
   .nav {
-    height: 40px;
+    height: 100%;
+  }
+  .block {
+    width: 145px;
+    height: 30px;
   }
 }
 </style>
