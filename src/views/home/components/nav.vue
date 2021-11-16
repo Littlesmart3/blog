@@ -31,6 +31,7 @@
 <script lang="ts">
 import { defineComponent, reactive, toRefs, ref } from 'vue';
 import BackGround from '@/components/background.vue';
+import Logo from '@/assets/img/logo.jpg';
 interface MustList {
   value: number;
   label: string;
@@ -66,7 +67,7 @@ export default defineComponent({
       }
     ];
     // const logo = 'https://tva1.sinaimg.cn/large/008i3skNly1gwgajgurtkj30iq03wq30.jpg';
-    const logo = 'https://tva1.sinaimg.cn/large/008i3skNly1gwgazhdyxdj30jq04wglr.jpg';
+    const logo: any = Logo;
     const state = reactive({
       menu_list
     });
