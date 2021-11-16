@@ -13,31 +13,28 @@
         </span>
       </div>
       <div class="nav-item">
-        <!-- <el-dropdown v-for="(item, key) of menu_list" :key="key">
-          <span class="el-dropdown-link">
-            <span>{{ item.name }}</span>
-            <el-icon class="el-icon--right">
-              <arrow-down />
-            </el-icon>
-          </span>
-          <template #dropdown>
-            <el-dropdown-menu class="nav-item">
-              <el-dropdown-item v-for="(element, index) of item.children" :key="index" @click="dropdownMenuClick(element.value)">{{ element.label }}</el-dropdown-item>
-            </el-dropdown-menu>
-          </template>
-        </el-dropdown> -->
+        <el-menu :default-active="activeIndex" class="el-menu-demo row-end" mode="horizontal" @select="navSelect">
+          <component v-for="item in menu_list" :is="item.children && item.children.length > 0 ? 'el-sub-menu' : 'el-menu-item'" :index="item.value">
+            <template #title>{{ item.label }} </template>
+            <template v-if="item.children && item.children.length > 0">
+              <el-menu-item v-for="(v, i) in item.children" :key="i" :index="v.value">
+                <span slot="title">{{ v.label }}</span>
+              </el-menu-item>
+            </template>
+          </component>
+        </el-menu>
       </div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, toRefs } from 'vue';
+import { defineComponent, reactive, toRefs, ref } from 'vue';
 import BackGround from '@/components/background.vue';
 interface MustList {
-  id: number;
-  name: string;
-  children: {
+  value: number;
+  label: string;
+  children?: {
     value: number;
     label: string;
   }[];
@@ -48,50 +45,24 @@ export default defineComponent({
   name: 'home',
   components: { BackGround },
   setup() {
+    const activeIndex = ref<any>();
     const menu_list: Array<MustList> = [
       {
-        id: 1,
-        name: '菜单1',
+        value: 1,
+        label: '首页'
+      },
+      {
+        value: 2,
+        label: '资源',
         children: [
-          { value: 1, label: '选项1' },
-          { value: 2, label: '选项2' },
-          { value: 3, label: '选项3' },
-          { value: 4, label: '选项4' },
-          { value: 5, label: '选项5' }
+          { value: 4, label: '后台管理系统' },
+          { value: 5, label: '笔记' },
+          { value: 6, label: '工作' }
         ]
       },
       {
-        id: 2,
-        name: '菜单2',
-        children: [
-          { value: 1, label: '选项1' },
-          { value: 2, label: '选项2' },
-          { value: 3, label: '选项3' },
-          { value: 4, label: '选项4' },
-          { value: 5, label: '选项5' }
-        ]
-      },
-      {
-        id: 3,
-        name: '菜单3',
-        children: [
-          { value: 1, label: '选项1' },
-          { value: 2, label: '选项2' },
-          { value: 3, label: '选项3' },
-          { value: 4, label: '选项4' },
-          { value: 5, label: '选项5' }
-        ]
-      },
-      {
-        id: 4,
-        name: '菜单4',
-        children: [
-          { value: 1, label: '选项1' },
-          { value: 2, label: '选项2' },
-          { value: 3, label: '选项3' },
-          { value: 4, label: '选项4' },
-          { value: 5, label: '选项5' }
-        ]
+        value: 3,
+        label: '关于我'
       }
     ];
     // const logo = 'https://tva1.sinaimg.cn/large/008i3skNly1gwgajgurtkj30iq03wq30.jpg';
@@ -99,12 +70,14 @@ export default defineComponent({
     const state = reactive({
       menu_list
     });
-    // 导航栏点击
-    const dropdownMenuClick = (val: number) => {
-      console.log(val);
+
+    // 导航按钮
+    const navSelect = () => {
+      //
     };
     const methods = {
-      dropdownMenuClick
+      activeIndex,
+      navSelect
     };
     return { ...toRefs(state), ...methods, logo };
   }
@@ -123,13 +96,37 @@ export default defineComponent({
     width: 145px;
     height: 30px;
   }
+  .nav-item {
+    width: 100%;
+    .el-menu {
+      --el-menu-background-color: none;
+      --el-menu-hover-background-color: none;
+    }
+    .el-menu--horizontal {
+      border-bottom: none;
+      .el-menu-item {
+        color: #fff;
+        &:hover {
+          color: #409eff;
+        }
+        &:focus {
+          background-color: unset;
+        }
+      }
+    }
+  }
 }
 </style>
 <style lang="scss">
 .home-component-nav {
   .nav-item {
-    .el-dropdown {
+    color: #fff;
+    .el-sub-menu .el-sub-menu__title {
       color: #fff;
+      &:hover {
+        color: #409eff;
+        background-color: unset;
+      }
     }
   }
 }
