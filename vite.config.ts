@@ -1,7 +1,9 @@
-import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
-import styleImport from 'vite-plugin-style-import'
+import { defineConfig } from 'vite';
+import vue from '@vitejs/plugin-vue';
+import styleImport from 'vite-plugin-style-import';
 import { join } from 'path';
+import { device_id } from './src/utils/machine-id';
+import {} from './src/api/';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -13,12 +15,12 @@ export default defineConfig({
           libraryName: 'element-plus',
           esModule: true,
           ensureStyleFile: true,
-          resolveStyle: (name:any) => {
+          resolveStyle: (name: any) => {
             return `element-plus/lib/theme-chalk/${name}.css`;
           },
-          resolveComponent: (name:any) => {
+          resolveComponent: (name: any) => {
             return `element-plus/lib/${name}`;
-          },
+          }
         }
       ]
     })
@@ -30,33 +32,21 @@ export default defineConfig({
    */
   base: './',
   /**
-  * 与“根”相关的目录，构建输出将放在其中。如果目录存在，它将在构建之前被删除。
-  * @default 'dist'
-  */
+   * 与“根”相关的目录，构建输出将放在其中。如果目录存在，它将在构建之前被删除。
+   * @default 'dist'
+   */
   // outDir: 'dist',
   server: {
-    // hostname: '0.0.0.0',
-    host: "localhost",
-    port: 3000,
-    // // 是否自动在浏览器打开
-    // open: true,
-    // // 是否开启 https
-    // https: false,
-    // // 服务端渲染
-    // ssr: false,
-    proxy: {
-      '/api': {
-        target: 'http://localhost:3333/',
-        changeOrigin: true,
-        ws: true,
-        rewrite: (pathStr:any) => pathStr.replace('/api', '')
-      },
-    },
+    host: 'localhost',
+    port: 3000
   },
   resolve: {
     // 导入文件夹别名
     alias: {
-      '@': join(__dirname, 'src'),
-    },
+      '@': join(__dirname, 'src')
+    }
+  },
+  define: {
+    __APP_DEVICE_ID__: JSON.stringify(device_id)
   }
-})
+});

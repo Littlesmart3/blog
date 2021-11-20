@@ -6,7 +6,7 @@
         <Nav></Nav>
       </el-header>
       <el-main>
-        <!-- <el-button type="primary" size="small" @click="btn">按钮1</el-button> -->
+        <el-button type="primary" size="small" @click="btn">按钮1</el-button>
       </el-main>
       <el-footer>
         <div class="footer row-between h100 fs14">
@@ -21,9 +21,10 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, onBeforeMount } from 'vue';
 import BackGround from '@/components/background.vue';
 import Nav from '@/views/home/components/nav.vue';
+import { HomeAPI } from '@/api/home/home';
 
 export default defineComponent({
   name: 'home',
@@ -35,13 +36,20 @@ export default defineComponent({
   },
   setup() {
     const btn = () => {
-      console.log(123);
+      // getNavList();
     };
     const record = {
       copyright: '版权所有 © 2021 - 2022 Littlesmart3 保留所有权利。',
       icp: '浙ICP备2021034302号',
       url: 'https://beian.miit.gov.cn'
     };
+    // const getNavList = async () => {
+    //   const send_data = {};
+    //   const { message } = await HomeAPI.navList(send_data);
+    // };
+    // onBeforeMount(() => {
+    //   getNavList;
+    // });
     return { btn, record };
   }
 });
