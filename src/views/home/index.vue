@@ -40,7 +40,7 @@ export default defineComponent({
     // 网站备案信息
     const record = RECORD;
     const state = reactive({
-      monitor_width: false
+      monitor_width: true
     });
     const btn = () => {
       getNavList();
