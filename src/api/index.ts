@@ -1,7 +1,6 @@
 import { reactive as _reactive } from 'vue';
 import Axios from './axios';
 
-// const VITE_FAAS = 'https://www.littlesmart3.top/api/';
 const VITE_FAAS = __APP_API_URL__;
 
 export interface AnyObject {
