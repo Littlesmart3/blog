@@ -3,7 +3,6 @@ import vue from '@vitejs/plugin-vue';
 import styleImport from 'vite-plugin-style-import';
 import { join } from 'path';
 import { device_id } from './src/utils/machine-id';
-import {} from './src/api/';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -47,6 +46,7 @@ export default defineConfig({
     }
   },
   define: {
-    __APP_DEVICE_ID__: JSON.stringify(device_id)
+    __APP_DEVICE_ID__: JSON.stringify(device_id),
+    __APP_API_URL__: JSON.stringify('https://www.littlesmart3.top/api/')
   }
 });
