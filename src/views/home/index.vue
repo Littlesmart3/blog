@@ -7,7 +7,6 @@
       </el-header>
       <el-main>
         <el-button type="primary" size="small" @click="btn">按钮1</el-button>
-        <el-button type="primary" size="small" @click="test">测试</el-button>
       </el-main>
       <el-footer>
         <div class="footer row-between h100 fs14">
@@ -52,29 +51,11 @@ export default defineComponent({
         console.log(error);
       }
     };
-    const test = () => {
-      const xmlHttp = new XMLHttpRequest();
-      //改写成你自己的域名
-      xmlHttp.open('get', 'https://www.littlesmart3.top/api/mysql');
-      xmlHttp.setRequestHeader('Access-Control-Allow-Origin', 'https://www.littlesmart3.top');
-      //注意这一句需要加，使其变为复杂请求
-      xmlHttp.setRequestHeader('Content-Type', 'application/json');
-      xmlHttp.send(
-        JSON.stringify({
-          hi: 'hi'
-        })
-      );
-      xmlHttp.onreadystatechange = function () {
-        // 啥也不用做
-        if (this.status === 200) {
-          console.log('上报成功');
-        }
-      };
-    };
+
     // onBeforeMount(() => {
     //   getNavList;
     // });
-    return { btn, record, test };
+    return { btn, record };
   }
 });
 </script>
