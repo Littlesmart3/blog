@@ -28,8 +28,12 @@ class Axios {
     const instance = service.create({
       baseURL: base_url,
       timeout,
-      withCredentials: true,
-      headers: { 'x-device-id': device_id }
+      withCredentials: false,
+      headers: {
+        'x-device-id': device_id,
+        'Content-Type': 'application/json;charset=utf-8',
+        'Access-Control-Allow-Origin': '*'
+      }
     });
 
     // 请求拦截器
