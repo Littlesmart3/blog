@@ -6,6 +6,7 @@
         <Nav :is_phone="monitor_width"></Nav>
       </el-header>
       <el-main>
+        <span class="row-center h80 fs100">oh my god！</span>
         <!-- <el-button type="primary" size="small" @click="btn">按钮</el-button> -->
       </el-main>
       <el-footer>
@@ -71,6 +72,7 @@ export default defineComponent({
 
 <style lang="scss">
 .home {
+  color: #fff;
   .el-container {
     height: 100%;
   }
@@ -81,6 +83,12 @@ export default defineComponent({
   }
   .el-main {
     text-align: center;
+    .main-center {
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
   }
   .el-menu {
   }
