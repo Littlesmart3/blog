@@ -9,8 +9,9 @@
         <el-button type="primary" size="small" @click="btn">按钮</el-button>
       </el-main>
       <el-footer>
-        <div class="footer row-between h100 fs14">
+        <div class="footer h100 fs14" :class="{ 'row-between': monitor_width }">
           <span>{{ record.copyright }}</span>
+          <br v-if="!monitor_width" />
           <span>
             <a class="beian" :href="record.url">{{ record.icp }}</a>
           </span>
@@ -21,10 +22,11 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onBeforeMount } from 'vue';
+import { defineComponent, onBeforeMount, reactive, toRefs } from 'vue';
 import BackGround from '@/components/background.vue';
 import Nav from '@/views/home/components/nav.vue';
 import { HomeAPI } from '@/api/home/home';
+import { RECORD } from '@/assets/base_info';
 
 export default defineComponent({
   name: 'home',
@@ -35,14 +37,16 @@ export default defineComponent({
     };
   },
   setup() {
+    // 网站备案信息
+    const record = RECORD;
+    const state = reactive({
+      monitor_width: false
+    });
     const btn = () => {
       getNavList();
     };
-    const record = {
-      copyright: '版权所有 © 2021 - 2022 Littlesmart3 保留所有权利。',
-      icp: '浙ICP备2021034302号',
-      url: 'https://beian.miit.gov.cn'
-    };
+
+    // 导航栏
     const getNavList = async () => {
       const send_data = {};
       try {
@@ -51,11 +55,16 @@ export default defineComponent({
         console.log(error);
       }
     };
-
-    // onBeforeMount(() => {
-    //   getNavList;
-    // });
-    return { btn, record };
+    const monitorWidth = () => {
+      window.onresize = () => {
+        state.monitor_width = document.documentElement.clientWidth < 750 ? false : true;
+      };
+    };
+    onBeforeMount(() => {
+      getNavList();
+      monitorWidth();
+    });
+    return { ...toRefs(state), btn, record };
   }
 });
 </script>

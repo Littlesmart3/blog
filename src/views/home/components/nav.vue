@@ -14,7 +14,7 @@
       </div>
       <div class="nav-item">
         <el-menu :default-active="activeIndex" class="el-menu-demo row-end" mode="horizontal" @select="navSelect">
-          <component v-for="item in menu_list" :is="item.children && item.children.length > 0 ? 'el-sub-menu' : 'el-menu-item'" :index="item.value">
+          <component v-for="(item, index) in menu_list" :is="item.children && item.children.length > 0 ? 'el-sub-menu' : 'el-menu-item'" :key="index" :index="item.value">
             <template #title>{{ item.label }} </template>
             <template v-if="item.children && item.children.length > 0">
               <el-menu-item v-for="(v, i) in item.children" :key="i" :index="v.value">
@@ -33,10 +33,10 @@ import { defineComponent, reactive, toRefs, ref } from 'vue';
 import BackGround from '@/components/background.vue';
 import Logo from '@/assets/img/logo.jpg';
 interface MustList {
-  value: number;
+  value: number | string;
   label: string;
   children?: {
-    value: number;
+    value: number | string;
     label: string;
   }[];
 }
@@ -49,20 +49,20 @@ export default defineComponent({
     const activeIndex = ref<any>();
     const menu_list: Array<MustList> = [
       {
-        value: 1,
+        value: '1',
         label: '首页'
       },
       {
-        value: 2,
+        value: '2',
         label: '资源',
         children: [
-          { value: 4, label: '后台管理系统' },
-          { value: 5, label: '笔记' },
-          { value: 6, label: '工作' }
+          { value: '4', label: '后台管理系统' },
+          { value: '5', label: '笔记' },
+          { value: '6', label: '工作' }
         ]
       },
       {
-        value: 3,
+        value: '3',
         label: '关于我'
       }
     ];
