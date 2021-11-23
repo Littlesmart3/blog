@@ -18,5 +18,3 @@ $ yarn build [ dev ]
 - "vite": "^2.6.13"
 - "element-plus": "^1.2.0-beta.1"
 - "typescript": "^4.4.4"
-
-1
