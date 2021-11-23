@@ -6,7 +6,7 @@
         <Nav></Nav>
       </el-header>
       <el-main>
-        <el-button type="primary" size="small" @click="btn">按钮1</el-button>
+        <el-button type="primary" size="small" @click="btn">按钮</el-button>
       </el-main>
       <el-footer>
         <div class="footer row-between h100 fs14">
