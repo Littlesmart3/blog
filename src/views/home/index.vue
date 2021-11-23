@@ -6,8 +6,7 @@
         <Nav :is_phone="monitor_width"></Nav>
       </el-header>
       <el-main>
-        <span class="row-center h80 fs100">oh my god！</span>
-        <!-- <el-button type="primary" size="small" @click="btn">按钮</el-button> -->
+        <span class="row-center h80" :class="[monitor_width ? 'fs100' : 'fs50']">oh my god！</span>
       </el-main>
       <el-footer>
         <div class="footer h100 fs14" :class="{ 'row-between': monitor_width, 'margin-lr100': monitor_width }">
