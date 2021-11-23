@@ -1,5 +1,5 @@
 <template>
-  <div class="home-component-nav">
+  <div class="home-component-nav" :class="{ 'margin-lr50': is_phone }">
     <div class="row-between nav">
       <div>
         <span class="el-dropdown-link">
@@ -45,6 +45,9 @@ interface MustList {
 export default defineComponent({
   name: 'home',
   components: { BackGround },
+  props: {
+    is_phone: { type: Boolean, default: false }
+  },
   setup() {
     const activeIndex = ref<any>();
     const menu_list: Array<MustList> = [
@@ -88,8 +91,6 @@ export default defineComponent({
 <style lang="scss" scoped>
 .home-component-nav {
   height: 100%;
-
-  margin: 0 50px;
   .nav {
     height: 100%;
   }

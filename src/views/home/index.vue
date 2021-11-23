@@ -3,13 +3,13 @@
     <BackGround />
     <el-container>
       <el-header>
-        <Nav></Nav>
+        <Nav :is_phone="monitor_width"></Nav>
       </el-header>
       <el-main>
-        <el-button type="primary" size="small" @click="btn">按钮</el-button>
+        <!-- <el-button type="primary" size="small" @click="btn">按钮</el-button> -->
       </el-main>
       <el-footer>
-        <div class="footer h100 fs14" :class="{ 'row-between': monitor_width }">
+        <div class="footer h100 fs14" :class="{ 'row-between': monitor_width, 'margin-lr100': monitor_width }">
           <span>{{ record.copyright }}</span>
           <br v-if="!monitor_width" />
           <span>
@@ -86,7 +86,6 @@ export default defineComponent({
   }
   .footer {
     color: #fff;
-    margin: 0 100px;
     .beian {
       text-decoration: none;
       color: #fff;
