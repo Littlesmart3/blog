@@ -6,7 +6,7 @@
         <Nav :is_phone="monitor_width"></Nav>
       </el-header>
       <el-main>
-        <span class="row-center h80" :class="[monitor_width ? 'fs100' : 'fs50']">oh my god！</span>
+        <span class="row-center h80" :class="[monitor_width ? 'fs100' : 'fs50']">oh my god！!</span>
       </el-main>
       <el-footer>
         <div class="footer h100 fs14" :class="{ 'row-between': monitor_width, 'margin-lr100': monitor_width }">
@@ -31,11 +31,6 @@ import { RECORD } from '@/assets/base_info';
 export default defineComponent({
   name: 'home',
   components: { BackGround, Nav },
-  data() {
-    return {
-      msg: '芜湖起飞呀～'
-    };
-  },
   setup() {
     // 网站备案信息
     const record = RECORD;
@@ -88,8 +83,6 @@ export default defineComponent({
       justify-content: center;
       align-items: center;
     }
-  }
-  .el-menu {
   }
   .footer {
     color: #fff;
