@@ -68,6 +68,8 @@ class Axios {
         }
       },
       (error) => {
+        console.log(error);
+
         if (error && error.response) {
           switch (error.response.status) {
             case 400:

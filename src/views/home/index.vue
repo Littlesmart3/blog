@@ -6,7 +6,7 @@
         <Nav :is_phone="monitor_width"></Nav>
       </el-header>
       <el-main>
-        <span class="row-center h80" :class="[monitor_width ? 'fs100' : 'fs50']">oh my god！!</span>
+        <span class="row-center h80" :class="[monitor_width ? 'fs100' : 'fs50']">oh my god！</span>
       </el-main>
       <el-footer>
         <div class="footer h100 fs14" :class="{ 'row-between': monitor_width, 'margin-lr100': monitor_width }">
@@ -25,7 +25,7 @@
 import { defineComponent, onBeforeMount, reactive, toRefs } from 'vue';
 import BackGround from '@/components/background.vue';
 import Nav from '@/views/home/components/nav.vue';
-import { HomeAPI } from '@/api/home/home';
+import { HomeAPI } from '@/api/home';
 import { RECORD } from '@/assets/base_info';
 
 export default defineComponent({
@@ -37,29 +37,15 @@ export default defineComponent({
     const state = reactive({
       monitor_width: true
     });
-    const btn = () => {
-      getNavList();
-    };
-
-    // 导航栏
-    const getNavList = async () => {
-      const send_data = {};
-      try {
-        const { message } = await HomeAPI.navList(send_data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
     const monitorWidth = () => {
       window.onresize = () => {
         state.monitor_width = document.documentElement.clientWidth < 750 ? false : true;
       };
     };
     onBeforeMount(() => {
-      getNavList();
       monitorWidth();
     });
-    return { ...toRefs(state), btn, record };
+    return { ...toRefs(state), record };
   }
 });
 </script>

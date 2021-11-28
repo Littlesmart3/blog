@@ -1,5 +1,5 @@
 import { reactive as _reactive } from 'vue';
-import Axios from './axios';
+import Axios from '../utils/axios';
 
 const VITE_FAAS = __APP_API_URL__;
 

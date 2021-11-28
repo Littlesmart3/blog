@@ -13,11 +13,17 @@
         </span>
       </div>
       <div class="nav-item">
-        <el-menu :default-active="activeIndex" class="el-menu-demo row-end" mode="horizontal" @select="navSelect">
-          <component v-for="(item, index) in menu_list" :is="item.children && item.children.length > 0 ? 'el-sub-menu' : 'el-menu-item'" :key="index" :index="item.value">
+        <el-menu :default-active="activeIndex" class="el-menu-demo row-end" mode="horizontal">
+          <component
+            v-for="item in menu_list"
+            :is="item.children && item.children.length > 0 ? 'el-sub-menu' : 'el-menu-item'"
+            :key="item.id.toString()"
+            :index="item.id.toString()"
+            @click="navSelect(item)"
+          >
             <template #title>{{ item.label }} </template>
             <template v-if="item.children && item.children.length > 0">
-              <el-menu-item v-for="(v, i) in item.children" :key="i" :index="v.value">
+              <el-menu-item v-for="v in item.children" :key="v.id.toString()" :index="v.id.toString()" @click="navSelect(v)">
                 <span slot="title">{{ v.label }}</span>
               </el-menu-item>
             </template>
@@ -29,14 +35,18 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, toRefs, ref } from 'vue';
+import { defineComponent, reactive, toRefs, ref, onBeforeMount } from 'vue';
+import { HomeAPI } from '@/api/home';
+import { getTreeList } from '@/utils/tools';
 import BackGround from '@/components/background.vue';
 import Logo from '@/assets/img/logo.jpg';
+import { ElMessage } from 'element-plus';
+import { ifError } from 'assert';
 interface MustList {
-  value: number | string;
+  id: number | string;
   label: string;
   children?: {
-    value: number | string;
+    id: number | string;
     label: string;
   }[];
 }
@@ -50,39 +60,32 @@ export default defineComponent({
   },
   setup() {
     const activeIndex = ref<any>();
-    const menu_list: Array<MustList> = [
-      {
-        value: '1',
-        label: '首页'
-      },
-      {
-        value: '2',
-        label: '资源',
-        children: [
-          { value: '4', label: '后台管理系统' },
-          { value: '5', label: '笔记' },
-          { value: '6', label: '工作' }
-        ]
-      },
-      {
-        value: '3',
-        label: '关于我'
-      }
-    ];
-    // const logo = 'https://tva1.sinaimg.cn/large/008i3skNly1gwgajgurtkj30iq03wq30.jpg';
+
+    // logo
     const logo: any = Logo;
     const state = reactive({
-      menu_list
+      menu_list: [] as Array<MustList>
     });
-
+    // 获取导航列表
+    const getNavList = async () => {
+      const { message, status } = await HomeAPI.navList();
+      if (status !== 200) return ElMessage.error('导航栏获取失败！');
+      state.menu_list = getTreeList(message, 'parent_id');
+      console.log(state.menu_list);
+    };
     // 导航按钮
-    const navSelect = () => {
-      //
+    const navSelect = (item) => {
+      if (item.children && item.children.length > 0) return;
+      else if (item.path.includes('http')) window.location.href = item.path;
+      else console.log(item.path);
     };
     const methods = {
       activeIndex,
       navSelect
     };
+    onBeforeMount(() => {
+      getNavList();
+    });
     return { ...toRefs(state), ...methods, logo };
   }
 });
