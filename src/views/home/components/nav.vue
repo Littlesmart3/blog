@@ -40,8 +40,7 @@ import { HomeAPI } from '@/api/home';
 import { getTreeList } from '@/utils/tools';
 import BackGround from '@/components/background.vue';
 import Logo from '@/assets/img/logo.jpg';
-import { ElMessage } from 'element-plus';
-import { ifError } from 'assert';
+
 interface MustList {
   id: number | string;
   label: string;
@@ -50,7 +49,6 @@ interface MustList {
     label: string;
   }[];
 }
-[];
 
 export default defineComponent({
   name: 'home',
@@ -71,7 +69,6 @@ export default defineComponent({
       const { message, status } = await HomeAPI.navList();
       if (status !== 200) return ElMessage.error('导航栏获取失败！');
       state.menu_list = getTreeList(message, 'parent_id');
-      console.log(state.menu_list);
     };
     // 导航按钮
     const navSelect = (item) => {
