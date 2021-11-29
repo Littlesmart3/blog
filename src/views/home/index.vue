@@ -25,7 +25,6 @@
 import { defineComponent, onBeforeMount, reactive, toRefs } from 'vue';
 import BackGround from '@/components/background.vue';
 import Nav from '@/views/home/components/nav.vue';
-import { HomeAPI } from '@/api/home';
 import { RECORD } from '@/assets/base_info';
 
 export default defineComponent({
