@@ -1,4 +1,3 @@
-import store from '@/store';
 import service, { AxiosInstance, AxiosPromise, AxiosRequestConfig, Method, AxiosResponse, AxiosError } from 'axios';
 
 interface Arguments {
@@ -8,7 +7,6 @@ interface Arguments {
   init?: boolean;
 }
 
-// type AxiosMethod<C = AxiosRequestConfig> = (url: string, config?: C) => Promise<any>;
 class Axios {
   private readonly instance: AxiosInstance;
   private init: boolean;
@@ -30,8 +28,12 @@ class Axios {
     const instance = service.create({
       baseURL: base_url,
       timeout,
-      withCredentials: true,
-      headers: { 'x-device-id': device_id }
+      withCredentials: false,
+      headers: {
+        'x-device-id': device_id,
+        'Content-Type': 'application/json;charset=utf-8',
+        'Access-Control-Allow-Origin': '*'
+      }
     });
 
     // 请求拦截器
@@ -66,6 +68,8 @@ class Axios {
         }
       },
       (error) => {
+        console.log(error);
+
         if (error && error.response) {
           switch (error.response.status) {
             case 400:
@@ -112,16 +116,12 @@ class Axios {
 
   private setAxiosMethods(method: Method) {
     return <R = any, Config = AxiosRequestConfig>(url: string, config?: Config): Promise<R> => {
-      const current = (store.state as any).authorization.current_info || null;
-
-      const menu_id = current?.id ? current.id : 0;
       return new Promise((resolve, reject) => {
-        const last_url = url.includes('?') ? `&menu_id=${menu_id}` : `?menu_id=${menu_id}`;
-        this.instance[method](url + last_url, config)
+        this.instance[method](url, config)
           .then((response: AxiosResponse | undefined) => {
             if (!response) reject('获取数据失败！');
             else {
-              if (response.status == 200) resolve(this.init ? response.data : response);
+              if (response.status === 200) resolve(this.init ? response.data : response);
               else reject(response.data);
             }
           })
