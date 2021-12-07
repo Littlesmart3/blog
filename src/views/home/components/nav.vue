@@ -104,6 +104,8 @@ export default defineComponent({
     .el-menu {
       --el-menu-background-color: none;
       --el-menu-hover-background-color: none;
+      --el-menu-bg-color: none;
+      --el-menu-hover-bg-color: none;
     }
     .el-menu--horizontal {
       border-bottom: none;
